@@ -43,4 +43,4 @@ jobs:
               sudo apt-get update -qy
               sudo apt-get install -y ruby-dev
               sudo gem install dpl
-              sudo dpl --provider=heroku --app=auth-app-service --api-key=${{secrets.HEROKU_API_KEY}}
+              sudo dpl --provider=heroku --app=auth-app-service --api_key=${{ secrets.HEROKU_API_KEY }}
