@@ -44,7 +44,7 @@ jobs:
 #         run: sudo snap install --classic heroku
       - name: Herku Deploy
         env:  
-          HEROKU_AUTH_TOKEN: ${{ secrets.HEROKU_API_KEY }}
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
         run:  |
               heroku login -i
               heroku plugins:install java
