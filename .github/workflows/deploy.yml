@@ -38,9 +38,16 @@ jobs:
         run:
           mvn clean install
       - name: Deploy to Heroku
-        run:  |
-              echo "Deploying to Heroku"
-              sudo apt-get update -qy
-              sudo apt-get install -y ruby-dev
-              sudo gem install dpl
-              dpl heroku api --app auth-app-service --api_key ${{secrets.HEROKU_API_KEY}}
+        run: echo "Deploying to Heroku"
+      - name: Login to Heroku Container registry
+        env: 
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+        run: heroku container:login 
+      - name: Build and push
+        env:
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+        run: heroku container:push -a ${{ secrets.HEROKU_AUTH_APP }} web 
+      - name: Release
+        env:
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+        run: heroku container:release -a ${{ secrets.HEROKU_AUTH_APP }} web 
