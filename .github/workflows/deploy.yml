@@ -47,6 +47,10 @@ jobs:
           HEROKU_AUTH_TOKEN: ${{ secrets.HEROKU_API_KEY }}
         run:  heroku login -i
       - name: Heroku Setup
+        env:  
+          HEROKU_AUTH_TOKEN: ${{ secrets.HEROKU_API_KEY }}
         run:  heroku plugins:install java
       - name: Heroku Deploy
+        env:  
+          HEROKU_AUTH_TOKEN: ${{ secrets.HEROKU_API_KEY }}
         run:  heroku deploy:jar target/*.jar --app auth-app-service
