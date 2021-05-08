@@ -44,3 +44,4 @@ jobs:
           heroku_app_name: 'auth-app-service'
           heroku_email: ${{secrets.HEROKU_USER_EMAL}}
           appdir: 'backend'
+          remote_branch: "main"
