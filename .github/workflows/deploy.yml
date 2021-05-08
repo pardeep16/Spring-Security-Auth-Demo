@@ -40,8 +40,8 @@ jobs:
       - name: Install and Build 🔧
         run:
           mvn clean install
-      - name: Install Heroku
-        run: sudo snap install --classic heroku
+#       - name: Install Heroku
+#         run: sudo snap install --classic heroku
       - name: Herku Login
         env:  
           HEROKU_AUTH_TOKEN: ${{ secrets.HEROKU_API_KEY }}
