@@ -23,6 +23,8 @@ jobs:
   build_deploy:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
+    env:
+      working_directory: ./backend
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -33,5 +35,4 @@ jobs:
           java-version: 1.8
       - name: Install and Build 🔧
         run:
-          cd backend
           mvn clean install
