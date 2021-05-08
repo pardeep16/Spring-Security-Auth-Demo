@@ -42,18 +42,18 @@ jobs:
           mvn clean install
 #       - name: Install Heroku
 #         run: sudo snap install --classic heroku
-      - name: Herku Login
-        run: |
-          cat > ~/.netrc <<EOF
-            machine api.heroku.com
-              login $HEROKU_EMAIL
-              password $HEROKU_API_KEY
-            machine git.heroku.com
-              login $HEROKU_USER_EMAIL
-              password $HEROKU_API_KEY
-          EOF
-        env:
-          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+#       - name: Herku Login
+#         run: |
+#           cat > ~/.netrc <<EOF
+#             machine api.heroku.com
+#               login $HEROKU_EMAIL
+#               password $HEROKU_API_KEY
+#             machine git.heroku.com
+#               login $HEROKU_USER_EMAIL
+#               password $HEROKU_API_KEY
+#           EOF
+#         env:
+#           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
       - name: Heroku Deploy
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
