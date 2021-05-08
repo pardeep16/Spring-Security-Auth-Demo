@@ -38,10 +38,9 @@ jobs:
         run:
           mvn clean install
       - name: Deploy to Heroku
-        uses: akhileshns/heroku-deploy@v3.12.12
-        with:
-          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: 'auth-app-service'
-          heroku_email: ${{secrets.HEROKU_USER_EMAL}}
-          appdir: 'backend'
-          remote_branch: "main"
+        run:
+          echo "Deploying to Heroku"
+          apt-get update -qy
+          apt-get install -y ruby-dev
+          gem install dpl
+          dpl --provider=heroku --app=auth-app-service --api-key=${{secrets.HEROKU_API_KEY}}
