@@ -27,9 +27,11 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - name: Checkout
-        uses: actions/checkout@v2.3.1,qcastel/github-actions-maven-cmd@1.0.1
+        uses: actions/checkout@v2.3.1
         with:
           persist-credentials: false
+      - name: Maven Checkout
+        uses: qcastel/github-actions-maven-cmd@1.0.1
       - name: Install and Build 🔧
         run:
           mvn clean install
