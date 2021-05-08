@@ -40,7 +40,7 @@ jobs:
       - name: Deploy to Heroku
         run:  |
               echo "Deploying to Heroku"
-              apt-get update -qy
-              apt-get install -y ruby-dev
-              gem install dpl
-              dpl --provider=heroku --app=auth-app-service --api-key=${{secrets.HEROKU_API_KEY}}
+              sudo apt-get update -qy
+              sudo apt-get install -y ruby-dev
+              sudo gem install dpl
+              sudo dpl --provider=heroku --app=auth-app-service --api-key=${{secrets.HEROKU_API_KEY}}
