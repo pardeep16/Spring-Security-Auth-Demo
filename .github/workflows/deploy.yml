@@ -41,16 +41,4 @@ jobs:
         run:
           mvn clean install
       - name: Deploy to Heroku
-        run: echo "Deploying to Heroku"
-      - name: Login to Heroku Container registry
-        env: 
-          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-        run: heroku --interactive container:login 
-      - name: Build and push
-        env:
-          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-        run: heroku container:push --recursive --app 'auth-app-service' web
-      - name: Release
-        env:
-          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-        run: heroku container:release --app 'auth-app-service' web worker
+        run: git push -f https://heroku:${{ secrets.HEROKU_API_KEY }}@git.heroku.com/${{ secrets.HEROKU_AUTH_APP }}.git origin/main:main
