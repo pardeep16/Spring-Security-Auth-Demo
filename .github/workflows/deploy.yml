@@ -40,5 +40,6 @@ jobs:
       - name: Install and Build 🔧
         run:
           mvn clean install
+      - uses: actions/checkout@v2
       - name: Deploy to Heroku
         run: git push -f https://heroku:${{ secrets.HEROKU_API_KEY }}@git.heroku.com/${{ secrets.HEROKU_AUTH_APP }}.git origin/main:main
